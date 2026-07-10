@@ -1,0 +1,336 @@
+.hero {
+  position: relative;
+  margin-top: 84px; /* clears the fixed header */
+  background: var(--ivory-deep);
+}
+
+.hero__track {
+  position: relative;
+  height: clamp(540px, 82vh, 780px);
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ */
+/* Slide                                                               */
+/* ------------------------------------------------------------------ */
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1s var(--ease-out),
+    visibility 0s 1s;
+}
+
+.hero-slide--active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s var(--ease-out);
+  z-index: 1;
+}
+
+.hero-slide__media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus-desktop, center);
+  transform: scale(1.045);
+  transition: transform 7s linear;
+}
+
+.hero-slide--active .hero-slide__media img {
+  transform: scale(1);
+}
+
+.hero-slide__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.hero-slide__content {
+  max-width: 520px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s var(--ease-out) 0.25s, transform 0.9s var(--ease-out) 0.25s;
+}
+
+.hero-slide--active .hero-slide__content {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-slide__eyebrow {
+  margin-bottom: 22px;
+}
+
+.hero-slide__heading {
+  font-size: clamp(32px, 4.4vw, 56px);
+  margin-bottom: 22px;
+  text-wrap: balance;
+}
+
+.hero-slide__desc {
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.75;
+  max-width: 44ch;
+  margin-bottom: 34px;
+}
+
+.hero-slide__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout: light-left (dark text on light image, left aligned)        */
+/* ------------------------------------------------------------------ */
+
+.hero-slide--light-left .hero-slide__desc {
+  color: var(--ink-soft);
+}
+
+/* soft wash so text holds up on smaller crops */
+.hero-slide--light-left .hero-slide__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(246, 242, 234, 0.72) 0%, rgba(246, 242, 234, 0) 52%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout: dark-right (light text on dark image, right aligned)       */
+/* ------------------------------------------------------------------ */
+
+.hero-slide--dark-right .hero-slide__inner {
+  justify-content: flex-end;
+}
+
+.hero-slide--dark-right .hero-slide__heading {
+  color: var(--on-dark);
+}
+
+.hero-slide--dark-right .hero-slide__desc {
+  color: var(--on-dark-soft);
+}
+
+.hero-slide--dark-right .hero-slide__eyebrow {
+  color: var(--bronze);
+}
+
+.hero-slide--dark-right .hero-slide__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(20, 15, 9, 0.68) 8%, rgba(20, 15, 9, 0.08) 60%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout: panel-right (solid ivory panel over the right edge).       */
+/* The panel intentionally covers stock text baked into the           */
+/* thread-lifting image's top-right corner.                           */
+/* ------------------------------------------------------------------ */
+
+.hero-slide--panel-right .hero-slide__inner {
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
+.hero-slide--panel-right .hero-slide__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  width: 46vw;
+  min-width: 460px;
+  height: 100%;
+  background: var(--ivory);
+  border-left: 1px solid var(--line);
+  padding: 40px clamp(32px, 5vw, 96px);
+  margin-right: calc(-1 * var(--gutter));
+}
+
+.hero-slide--panel-right .hero-slide__desc {
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ */
+/* Controls                                                            */
+/* ------------------------------------------------------------------ */
+
+.hero__controls {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 26px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hero__dots {
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.hero__dot {
+  width: 34px;
+  height: 22px;
+  position: relative;
+}
+
+.hero__dot::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: rgba(38, 33, 25, 0.35);
+  transition: background-color 0.3s;
+}
+
+.hero__dot--active::after {
+  background: var(--orange);
+}
+
+.hero__arrows {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.hero__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  background: rgba(246, 242, 234, 0.85);
+  transition: background-color 0.25s, border-color 0.25s;
+}
+
+.hero__arrow:hover {
+  background: var(--ivory);
+  border-color: var(--ink);
+}
+
+/* keep controls legible over the dark second slide */
+.hero-slide--dark-right ~ * .hero__arrow {
+  background: rgba(246, 242, 234, 0.85);
+}
+
+/* ------------------------------------------------------------------ */
+/* Stacked layout for tablet portrait & mobile                         */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 880px) {
+  .hero {
+    margin-top: 70px;
+  }
+
+  .hero__track {
+    height: auto;
+  }
+
+  .hero-slide {
+    position: relative;
+    inset: auto;
+    display: none;
+    flex-direction: column;
+  }
+
+  .hero-slide--active {
+    display: flex;
+  }
+
+  .hero-slide__media {
+    position: relative;
+    height: min(58vw, 420px);
+    overflow: hidden;
+  }
+
+  .hero-slide__media::after {
+    display: none !important;
+  }
+
+  .hero-slide__media img {
+    object-position: var(--focus-mobile, center);
+    transform: none;
+    transition: none;
+  }
+
+  /* crop hard to the left portion so the stock caption baked into
+     the thread-lifting image's corner stays off-canvas */
+  .hero-slide--panel-right .hero-slide__media img {
+    width: 190%;
+    max-width: none;
+  }
+
+  .hero-slide__inner {
+    height: auto;
+  }
+
+  .hero-slide__content,
+  .hero-slide--panel-right .hero-slide__content {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    border: 0;
+    background: none;
+    padding: 34px 0 92px;
+  }
+
+  .hero-slide--dark-right .hero-slide__heading,
+  .hero-slide--dark-right .hero-slide__desc {
+    color: inherit;
+  }
+
+  .hero-slide--dark-right .hero-slide__desc,
+  .hero-slide__desc {
+    color: var(--ink-soft);
+  }
+
+  .hero-slide--dark-right .btn--outline-light {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+
+  .hero__controls {
+    bottom: 22px;
+  }
+
+  .hero__arrow {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-slide__actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide__media img {
+    transform: none;
+  }
+}

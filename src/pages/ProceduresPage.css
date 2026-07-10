@@ -1,0 +1,69 @@
+/* ------------------------------------------------------------------ */
+/* Introduction                                                        */
+/* ------------------------------------------------------------------ */
+
+.p-intro {
+  padding: var(--section-y) 0 calc(var(--section-y) * 0.55);
+  background: var(--ivory);
+}
+
+.p-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.4fr) minmax(0, 4.6fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.p-intro .eyebrow {
+  margin-bottom: 14px;
+}
+
+.p-intro h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  text-wrap: balance;
+}
+
+.p-intro__copy {
+  padding-top: 10px;
+}
+
+.p-intro__copy p {
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+/* larger supporting statement set off by an orange rule */
+.p-intro__statement {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: var(--ink) !important;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+
+@media (max-width: 880px) {
+  .p-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .p-intro__copy {
+    padding-top: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Category showcase wrapper                                           */
+/* ------------------------------------------------------------------ */
+
+.p-categories {
+  padding: 0 0 var(--section-y);
+  background: var(--ivory);
+  /* keep the section clear of the fixed header when the hero button
+     smooth-scrolls here */
+  scroll-margin-top: 90px;
+}

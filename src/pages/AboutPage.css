@@ -1,0 +1,277 @@
+/* ------------------------------------------------------------------ */
+/* Hero — split editorial panel                                        */
+/* ------------------------------------------------------------------ */
+
+.a-hero {
+  margin-top: 84px;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--line);
+}
+
+.a-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.1fr) minmax(0, 4.9fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+  min-height: clamp(440px, 62vh, 600px);
+  padding-top: clamp(40px, 5vw, 72px);
+  padding-bottom: clamp(40px, 5vw, 72px);
+}
+
+.a-hero__content .eyebrow {
+  margin-bottom: 14px;
+}
+
+.a-hero__content h1 {
+  font-size: clamp(32px, 3.7vw, 50px);
+  margin-bottom: 22px;
+  text-wrap: balance;
+}
+
+.a-hero__desc {
+  color: var(--ink-soft);
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.75;
+  max-width: 46ch;
+  margin-bottom: 34px;
+}
+
+.a-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.a-hero__media {
+  position: relative;
+}
+
+.a-hero__frame {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--line);
+  padding: 12px;
+  background: var(--ivory);
+}
+
+.a-hero__frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1206 / 819; /* native ratio — clinic signage stays visible */
+  object-fit: cover;
+}
+
+.a-hero__rule {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: -22px;
+  bottom: -22px;
+  border: 1px solid rgba(165, 130, 83, 0.4);
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Company introduction                                                */
+/* ------------------------------------------------------------------ */
+
+.a-intro {
+  padding: var(--section-y) 0;
+  background: var(--ivory);
+  scroll-margin-top: 90px;
+}
+
+.a-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.2fr) minmax(0, 4.8fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.a-intro .eyebrow {
+  margin-bottom: 14px;
+}
+
+.a-intro h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  text-wrap: balance;
+}
+
+.a-intro__fact {
+  position: relative;
+  display: inline-block;
+  margin-top: 26px;
+  padding-top: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bronze);
+}
+
+.a-intro__copy {
+  padding-top: 10px;
+}
+
+.a-intro__copy p {
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin-bottom: 20px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Clinic story — image left, offset from the grid                     */
+/* ------------------------------------------------------------------ */
+
+.a-story {
+  padding: var(--section-y) 0;
+  background: var(--ivory-deep);
+}
+
+.a-story__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4.8fr) minmax(0, 5.2fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.a-story__media {
+  position: relative;
+  margin-left: clamp(-8px, -1vw, -16px);
+}
+
+.a-story__frame {
+  position: relative;
+  z-index: 1;
+}
+
+.a-story__frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+  /* crop toward the vanity table; the left edge of the source photo
+     contains dated promotional posters */
+  object-position: 78% 45%;
+}
+
+.a-story__rule {
+  position: absolute;
+  top: -22px;
+  left: 22px;
+  right: -22px;
+  bottom: 22px;
+  border: 1px solid rgba(165, 130, 83, 0.4);
+  z-index: 0;
+}
+
+.a-story__text .eyebrow {
+  margin-bottom: 14px;
+}
+
+.a-story__text h2 {
+  font-size: clamp(28px, 3.1vw, 40px);
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+.a-story__para {
+  color: var(--ink-soft);
+  max-width: 54ch;
+  margin-bottom: 18px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Clinic experience                                                   */
+/* ------------------------------------------------------------------ */
+
+.a-exp {
+  padding: var(--section-y) 0;
+  background: var(--ivory);
+}
+
+.a-exp__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.6fr) minmax(0, 4.4fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+
+.a-exp .eyebrow {
+  margin-bottom: 14px;
+}
+
+.a-exp h2 {
+  font-size: clamp(26px, 2.9vw, 38px);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+
+.a-exp__body {
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+.a-exp__list li {
+  position: relative;
+  padding: 15px 2px 15px 26px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(17px, 1.6vw, 20px);
+  border-bottom: 1px solid var(--line);
+}
+
+.a-exp__list li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.a-exp__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1.6px;
+  background: var(--orange);
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 880px) {
+  .a-hero {
+    margin-top: 70px;
+  }
+
+  .a-hero__grid,
+  .a-intro__grid,
+  .a-story__grid,
+  .a-exp__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .a-hero__grid {
+    min-height: 0;
+  }
+
+  /* image first on mobile so the clinic is seen immediately */
+  .a-hero__media {
+    order: -1;
+    max-width: 560px;
+  }
+
+  .a-story__media {
+    margin-left: 0;
+    max-width: 560px;
+  }
+
+  .a-intro__copy {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .a-hero__actions .btn {
+    width: 100%;
+  }
+}

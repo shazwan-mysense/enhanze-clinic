@@ -1,0 +1,97 @@
+.pgroup {
+  break-inside: avoid;
+  margin-bottom: clamp(30px, 3.4vw, 48px);
+}
+
+.pgroup__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--price-rule);
+  margin-bottom: 4px;
+}
+
+.pgroup__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.3;
+  color: var(--price-ink);
+}
+
+.pgroup__count {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--price-faint);
+}
+
+.pgroup__note {
+  font-size: 12.5px;
+  color: var(--price-faint);
+  padding: 10px 2px 2px;
+}
+
+/* accordion toggle (mobile only) */
+.pgroup__head--toggle {
+  cursor: pointer;
+  min-height: 52px;
+}
+
+.pgroup__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}
+
+.pgroup__icon::before,
+.pgroup__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.6px;
+  background: var(--orange);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.pgroup__icon::after {
+  transform: rotate(90deg);
+}
+
+.pgroup--open .pgroup__icon::after {
+  transform: rotate(0deg);
+}
+
+/* light height animation via the 0fr/1fr grid technique */
+.pgroup__panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s var(--ease-out);
+}
+
+.pgroup__panel-inner {
+  overflow: hidden;
+}
+
+@media (max-width: 880px) {
+  /* collapsed: zero height AND visibility:hidden so rows leave the
+     accessibility tree and tab order */
+  .pgroup__panel {
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.35s var(--ease-out),
+      visibility 0.35s;
+  }
+
+  .pgroup--open .pgroup__panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+}

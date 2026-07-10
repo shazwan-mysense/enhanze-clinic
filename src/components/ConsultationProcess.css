@@ -1,0 +1,58 @@
+.process {
+  padding: var(--section-y) 0;
+  background: var(--ivory);
+}
+
+/* horizontal timeline built from typography and hairlines */
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  counter-reset: step;
+}
+
+.process__step {
+  position: relative;
+  padding: clamp(28px, 3.4vw, 44px) clamp(20px, 2.6vw, 40px) 8px 0;
+}
+
+.process__step + .process__step {
+  padding-left: clamp(20px, 2.6vw, 40px);
+  border-left: 1px solid var(--line);
+}
+
+.process__count {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--bronze);
+  margin-bottom: 14px;
+}
+
+.process__step h3 {
+  font-size: clamp(20px, 1.8vw, 24px);
+  margin-bottom: 12px;
+}
+
+.process__step p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+
+@media (max-width: 880px) {
+  .process__steps {
+    grid-template-columns: 1fr;
+    border-top: 0;
+  }
+
+  .process__step {
+    padding: 26px 0 26px 26px;
+    border-left: 1px solid var(--line);
+  }
+
+  .process__step + .process__step {
+    padding-left: 26px;
+  }
+}

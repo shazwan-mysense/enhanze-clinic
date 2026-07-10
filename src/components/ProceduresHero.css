@@ -1,0 +1,103 @@
+.p-hero {
+  position: relative;
+  margin-top: 84px; /* clears the fixed header */
+  overflow: hidden;
+}
+
+.p-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.p-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% 30%;
+}
+
+/* warm wash over the left negative space, matching the homepage's
+   light hero slide */
+.p-hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    92deg,
+    rgba(243, 236, 224, 0.92) 0%,
+    rgba(243, 236, 224, 0.76) 36%,
+    rgba(243, 236, 224, 0) 64%
+  );
+}
+
+.p-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: clamp(480px, 68vh, 660px);
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.p-hero__content {
+  max-width: 540px;
+}
+
+.p-hero__content .eyebrow {
+  margin-bottom: 14px;
+}
+
+.p-hero__content h1 {
+  font-size: clamp(32px, 3.8vw, 52px);
+  margin-bottom: 22px;
+  text-wrap: balance;
+}
+
+.p-hero__desc {
+  color: var(--ink-soft);
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.75;
+  max-width: 46ch;
+  margin-bottom: 34px;
+}
+
+.p-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* stacked layout for tablet portrait & mobile — same pattern as the
+   homepage hero */
+@media (max-width: 880px) {
+  .p-hero {
+    margin-top: 70px;
+  }
+
+  .p-hero__media {
+    position: relative;
+    height: min(58vw, 420px);
+  }
+
+  .p-hero__media img {
+    object-position: 72% 22%;
+  }
+
+  .p-hero__media::after {
+    display: none;
+  }
+
+  .p-hero__inner {
+    min-height: 0;
+    padding-top: 34px;
+    padding-bottom: 48px;
+    background: var(--ivory-deep);
+  }
+}
+
+@media (max-width: 420px) {
+  .p-hero__actions .btn {
+    width: 100%;
+  }
+}

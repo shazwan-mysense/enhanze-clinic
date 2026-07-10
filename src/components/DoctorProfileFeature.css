@@ -1,0 +1,111 @@
+.docprofile {
+  background: var(--ivory-deep);
+  padding: var(--section-y) 0;
+  scroll-margin-top: 90px;
+}
+
+.docprofile__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4.2fr) minmax(0, 5.8fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+/* tall portrait column — near-native 2:3 ratio keeps the full-body
+   photo essentially uncropped */
+.docprofile__media {
+  position: sticky;
+  top: 110px;
+  max-width: 460px;
+}
+
+.docprofile__portrait {
+  border: 1px solid var(--line);
+  padding: 12px;
+  background: var(--ivory);
+}
+
+.docprofile__portrait::after {
+  background: var(--stone);
+}
+
+.docprofile__portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1500 / 2258;
+  object-fit: cover;
+}
+
+.docprofile__quote {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 26px);
+  margin-top: 22px;
+  color: var(--ink);
+}
+
+
+.docprofile__text .eyebrow {
+  margin-bottom: 14px;
+}
+
+.docprofile__text h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  margin-bottom: 30px;
+  text-wrap: balance;
+}
+
+.docprofile__name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(21px, 2vw, 25px);
+  margin-bottom: 4px;
+}
+
+.docprofile__role {
+  font-size: 13px;
+  color: var(--bronze);
+  margin-bottom: 4px;
+}
+
+.docprofile__experience {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding-bottom: 22px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.docprofile__creds {
+  margin-bottom: 26px;
+}
+
+.docprofile__creds li {
+  padding: 12px 2px;
+  font-size: 14.5px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.docprofile__para {
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin-bottom: 18px;
+}
+
+.docprofile__cta {
+  margin-top: 10px;
+}
+
+@media (max-width: 880px) {
+  .docprofile__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* portrait first, biography after */
+  .docprofile__media {
+    position: static;
+    max-width: 420px;
+  }
+}

@@ -1,0 +1,69 @@
+.pnav {
+  position: sticky;
+  /* sits below the compact sticky header */
+  top: 65px;
+  z-index: 40;
+  background: rgba(246, 242, 234, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pnav__list {
+  display: flex;
+  gap: clamp(18px, 3vw, 40px);
+  overflow-x: auto;
+  scrollbar-width: none; /* items stay keyboard-focusable */
+  -webkit-overflow-scrolling: touch;
+}
+
+.pnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.pnav__item {
+  position: relative;
+  padding: 16px 2px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+
+.pnav__item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.pnav__item:hover {
+  color: var(--ink);
+}
+
+/* active state uses colour AND the underline, not colour alone */
+.pnav__item--active {
+  color: var(--orange-deep);
+  font-weight: 600;
+}
+
+.pnav__item--active::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 880px) {
+  .pnav {
+    top: 69px;
+  }
+
+  .pnav__item {
+    padding: 14px 2px;
+  }
+}

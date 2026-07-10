@@ -1,0 +1,37 @@
+.section-heading {
+  max-width: 640px;
+  margin-bottom: clamp(44px, 6vw, 72px);
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  text-wrap: balance;
+}
+
+.section-heading__desc {
+  margin-top: 20px;
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+.section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+
+.section-heading--center .section-heading__desc {
+  margin-inline: auto;
+}
+
+.section-heading--dark h2 {
+  color: var(--on-dark);
+}
+
+.section-heading--dark .section-heading__desc {
+  color: var(--on-dark-soft);
+}

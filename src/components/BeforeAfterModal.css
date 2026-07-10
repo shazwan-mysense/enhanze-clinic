@@ -1,0 +1,89 @@
+.ba-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 160; /* above header (100) and mobile menu (150) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 48px);
+}
+
+.ba-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 20, 14, 0.72);
+  animation: ba-backdrop-in 0.3s ease forwards;
+}
+
+@keyframes ba-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.ba-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--ivory);
+  padding: clamp(16px, 2vw, 24px);
+  animation: ba-dialog-in 0.35s var(--ease-out) forwards;
+}
+
+@keyframes ba-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.ba-modal__close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--ivory);
+  transition: color 0.25s;
+}
+
+.ba-modal__close:hover {
+  color: var(--orange-deep);
+}
+
+.ba-modal__media {
+  position: relative;
+}
+
+.ba-modal__media img {
+  width: 100%;
+  height: auto;
+}
+
+.ba-modal__body {
+  padding: 18px 2px 6px;
+}
+
+.ba-modal__body h3 {
+  font-size: clamp(20px, 2vw, 25px);
+  margin-bottom: 8px;
+}
+
+.ba-modal__body p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  max-width: 64ch;
+}
+
+/* body scroll lock while the modal is open */
+body.modal-open {
+  overflow: hidden;
+}

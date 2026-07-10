@@ -1,0 +1,67 @@
+/* light editorial counterpart to the homepage's dark procedures list */
+
+.tdir {
+  padding: var(--section-y) 0;
+  background: var(--ivory-deep);
+}
+
+.tdir__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 72px);
+}
+
+.tdir__group {
+  /* anchor target: keep headings clear of the fixed header when
+     category links scroll here */
+  scroll-margin-top: 96px;
+}
+
+.tdir__group h3 {
+  font-size: 22px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--bronze);
+}
+
+.tdir__group a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 2px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.25s, padding-left 0.25s var(--ease-out);
+}
+
+.tdir__group .arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+  color: var(--orange);
+}
+
+.tdir__group a:hover,
+.tdir__group a:focus-visible {
+  color: var(--ink);
+  padding-left: 8px;
+}
+
+.tdir__group a:hover .arrow,
+.tdir__group a:focus-visible .arrow {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 880px) {
+  .tdir__grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .tdir__group {
+    scroll-margin-top: 84px;
+  }
+}

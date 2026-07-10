@@ -1,0 +1,130 @@
+.psec {
+  padding: var(--section-y) 0;
+  /* keep headings clear of the sticky header + category nav */
+  scroll-margin-top: 122px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Theme variables consumed by group/row styles                        */
+/* ------------------------------------------------------------------ */
+
+.psec--light {
+  background: var(--ivory);
+  --price-ink: var(--ink);
+  --price-soft: var(--ink-soft);
+  --price-faint: #8a8072;
+  --price-line: var(--line);
+  --price-rule: var(--bronze);
+}
+
+.psec--deep {
+  background: var(--ivory-deep);
+  --price-ink: var(--ink);
+  --price-soft: var(--ink-soft);
+  --price-faint: #8a8072;
+  --price-line: var(--line);
+  --price-rule: var(--bronze);
+}
+
+.psec--dark {
+  background: var(--espresso-2);
+  --price-ink: var(--on-dark);
+  --price-soft: var(--on-dark-soft);
+  --price-faint: #8d8168;
+  --price-line: var(--line-on-dark);
+  --price-rule: var(--bronze);
+}
+
+.psec--dark .eyebrow {
+  color: var(--bronze);
+}
+
+/* ------------------------------------------------------------------ */
+/* Section intro — asymmetric heading + image                          */
+/* ------------------------------------------------------------------ */
+
+.psec__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5.6fr) minmax(0, 4.4fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: center;
+  margin-bottom: clamp(40px, 5vw, 68px);
+}
+
+.psec--img-left .psec__intro {
+  grid-template-columns: minmax(0, 4.4fr) minmax(0, 5.6fr);
+}
+
+.psec--img-left .psec__intro-text {
+  order: 2;
+}
+
+.psec--img-left .psec__media {
+  order: 1;
+}
+
+.psec__intro--no-image {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+
+.psec__intro-text .eyebrow {
+  margin-bottom: 18px;
+}
+
+.psec__intro-text h2 {
+  font-size: clamp(26px, 2.9vw, 38px);
+  margin-bottom: 18px;
+  text-wrap: balance;
+  color: var(--price-ink);
+}
+
+.psec__desc {
+  color: var(--price-soft);
+  max-width: 52ch;
+}
+
+.psec__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 7 / 4;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Groups — two flowing columns on desktop                             */
+/* ------------------------------------------------------------------ */
+
+.psec__groups {
+  columns: 2;
+  column-gap: clamp(40px, 5vw, 88px);
+}
+
+@media (max-width: 880px) {
+  .psec__intro,
+  .psec--img-left .psec__intro {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .psec--img-left .psec__intro-text {
+    order: 1;
+  }
+
+  .psec--img-left .psec__media {
+    order: 2;
+  }
+
+  .psec__media img {
+    aspect-ratio: 7 / 4.4;
+  }
+
+  .psec__groups {
+    columns: 1;
+  }
+
+  .psec {
+    scroll-margin-top: 118px;
+  }
+}

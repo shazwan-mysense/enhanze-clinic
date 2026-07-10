@@ -1,0 +1,123 @@
+/* editorial asymmetric layout — Skin featured large, Body and Health
+   stacked beside it with landscape crops */
+
+.pcat-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5.4fr) minmax(0, 4.6fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+.pcat-grid__side {
+  display: grid;
+  gap: clamp(24px, 3vw, 44px);
+  margin-top: clamp(32px, 4vw, 72px); /* intentional offset */
+}
+
+/* the whole panel is one button so the target is large and
+   keyboard-accessible */
+.pcat__link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+.pcat__media {
+  overflow: hidden;
+}
+
+.pcat__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.pcat--featured .pcat__media {
+  aspect-ratio: 7 / 8;
+}
+
+.pcat-grid__side .pcat__media {
+  aspect-ratio: 7 / 4.4;
+}
+
+.pcat__link:hover .pcat__media img,
+.pcat__link:focus-visible .pcat__media img {
+  transform: scale(1.045);
+}
+
+.pcat__body {
+  padding-top: 20px;
+}
+
+.pcat__body h3 {
+  font-size: clamp(22px, 2vw, 27px);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.pcat__body h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.pcat__link:hover h3::after,
+.pcat__link:focus-visible h3::after {
+  transform: scaleX(1);
+}
+
+.pcat__body p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  max-width: 44ch;
+}
+
+.pcat__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pcat__cta .arrow {
+  color: var(--orange);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.pcat__link:hover .pcat__cta .arrow,
+.pcat__link:focus-visible .pcat__cta .arrow {
+  transform: translateY(4px);
+}
+
+@media (max-width: 880px) {
+  .pcat-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pcat-grid__side {
+    margin-top: 0;
+    gap: 40px;
+  }
+
+  /* consistent, not-too-tall crops when stacked */
+  .pcat--featured .pcat__media,
+  .pcat-grid__side .pcat__media {
+    aspect-ratio: 7 / 5;
+  }
+}
