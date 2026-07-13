@@ -9,6 +9,8 @@ import BeforeAfterPage from './pages/BeforeAfterPage'
 import NewsPage from './pages/NewsPage'
 import AppointmentPage from './pages/AppointmentPage'
 import ContactPage from './pages/ContactPage'
+import TreatmentPage from './pages/TreatmentPage'
+import { endolift, ultherapyPrime } from './data/treatments'
 import { RouterProvider, useRoute } from './router'
 
 function CurrentPage() {
@@ -16,6 +18,8 @@ function CurrentPage() {
   // "/procedures" and its future children (e.g. /procedures/acne)
   // all resolve to the Procedures page for now; unknown routes fall
   // back to the homepage so placeholder links never dead-end.
+  if (path === '/procedures/endolift') return <TreatmentPage data={endolift} />
+  if (path === '/procedures/ultherapy-prime') return <TreatmentPage data={ultherapyPrime} />
   if (path.startsWith('/procedures')) return <ProceduresPage />
   if (path.startsWith('/price')) return <PricePage />
   if (path.startsWith('/about')) return <AboutPage />

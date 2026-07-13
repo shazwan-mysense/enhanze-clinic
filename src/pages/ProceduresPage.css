@@ -67,3 +67,104 @@
      smooth-scrolls here */
   scroll-margin-top: 90px;
 }
+
+/* ------------------------------------------------------------------ */
+/* Signature treatments band                                           */
+/* ------------------------------------------------------------------ */
+
+.p-signature {
+  padding: var(--section-y) 0;
+  background: var(--ivory-deep);
+}
+
+.p-signature .eyebrow {
+  margin-bottom: 14px;
+}
+
+.p-signature h2 {
+  font-size: clamp(26px, 3vw, 40px);
+  text-wrap: balance;
+}
+
+.p-signature__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+  margin-top: clamp(32px, 4vw, 52px);
+}
+
+.p-signature__card {
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--ivory);
+  padding: 12px;
+}
+
+.p-signature__media {
+  overflow: hidden;
+}
+
+.p-signature__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.p-signature__card:hover .p-signature__media img,
+.p-signature__card:focus-visible .p-signature__media img {
+  transform: scale(1.03);
+}
+
+.p-signature__body {
+  padding: 20px 10px 10px;
+}
+
+.p-signature__body h3 {
+  font-size: clamp(21px, 2vw, 26px);
+  margin-bottom: 4px;
+}
+
+.p-signature__tagline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--bronze);
+  margin-bottom: 10px;
+}
+
+.p-signature__body p:not(.p-signature__tagline) {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+  max-width: 46ch;
+}
+
+.p-signature__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.p-signature__cta .arrow {
+  color: var(--orange);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.p-signature__card:hover .p-signature__cta .arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 760px) {
+  .p-signature__grid {
+    grid-template-columns: 1fr;
+  }
+}
