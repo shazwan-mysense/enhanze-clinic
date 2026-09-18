@@ -10,16 +10,23 @@ import NewsPage from './pages/NewsPage'
 import AppointmentPage from './pages/AppointmentPage'
 import ContactPage from './pages/ContactPage'
 import TreatmentPage from './pages/TreatmentPage'
+import ServicePage from './pages/ServicePage'
 import { endolift, ultherapyPrime } from './data/treatments'
+import { serviceBySlug } from './data/services'
 import { RouterProvider, useRoute } from './router'
 
 function CurrentPage() {
   const path = useRoute()
-  // "/procedures" and its future children (e.g. /procedures/acne)
-  // all resolve to the Procedures page for now; unknown routes fall
-  // back to the homepage so placeholder links never dead-end.
+  // "/procedures/<slug>" resolves to a signature treatment page, then to
+  // a service (concern) page; anything else under /procedures falls back
+  // to the Procedures page, and unknown routes to the homepage, so no
+  // link ever dead-ends.
   if (path === '/procedures/endolift') return <TreatmentPage data={endolift} />
   if (path === '/procedures/ultherapy-prime') return <TreatmentPage data={ultherapyPrime} />
+  if (path.startsWith('/procedures/')) {
+    const service = serviceBySlug(path.slice('/procedures/'.length))
+    if (service) return <ServicePage data={service} />
+  }
   if (path.startsWith('/procedures')) return <ProceduresPage />
   if (path.startsWith('/price')) return <PricePage />
   if (path.startsWith('/about')) return <AboutPage />

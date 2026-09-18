@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "enhanze-services",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "python3 -m http.server \"${PORT:-9781}\" --directory /private/tmp/claude-501/-Users-mysense-Desktop/213a6177-7e5a-40a2-880f-2b2921ec3053/scratchpad/enhanze-preview"
+      ],
+      "port": 9781,
+      "autoPort": true
+    }
+  ]
+}
