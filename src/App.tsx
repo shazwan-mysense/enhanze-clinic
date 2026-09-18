@@ -21,11 +21,16 @@ function CurrentPage() {
   // a service (concern) page; anything else under /procedures falls back
   // to the Procedures page, and unknown routes to the homepage, so no
   // link ever dead-ends.
-  if (path === '/procedures/endolift') return <TreatmentPage data={endolift} />
-  if (path === '/procedures/ultherapy-prime') return <TreatmentPage data={ultherapyPrime} />
+  // `key` forces a remount when moving between two pages that share a
+  // component: the reveal observer adds `.is-visible` imperatively, so a
+  // reused node would keep (or lose) that class when React rewrites
+  // className, leaving sections stuck invisible.
+  if (path === '/procedures/endolift') return <TreatmentPage key="endolift" data={endolift} />
+  if (path === '/procedures/ultherapy-prime')
+    return <TreatmentPage key="ultherapy-prime" data={ultherapyPrime} />
   if (path.startsWith('/procedures/')) {
     const service = serviceBySlug(path.slice('/procedures/'.length))
-    if (service) return <ServicePage data={service} />
+    if (service) return <ServicePage key={service.slug} data={service} />
   }
   if (path.startsWith('/procedures')) return <ProceduresPage />
   if (path.startsWith('/price')) return <PricePage />
